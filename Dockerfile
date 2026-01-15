@@ -31,19 +31,15 @@ COPY . /app
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Cache Laravel config
-RUN php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan view:cache
-
-# Create start script
-RUN echo '#!/bin/bash\n\
-php artisan migrate --force\n\
-php -S 0.0.0.0:${PORT:-8080} -t public\n\
-' > /app/start.sh && chmod +x /app/start.sh
+# DON'T cache config - let it load fresh
+# RUN php artisan config:cache
 
 # Expose port
 EXPOSE 8080
 
-# Start server
-CMD ["/app/start.sh"]
+# Start server - clear cache first, then migrate, then serve
+CMD php artisan config:clear && \
+    php artisan route:clear && \
+    php artisan view:clear && \
+    php artisan migrate --force && \
+    php -S 0.0.0.0:${PORT:-8080} -t public
