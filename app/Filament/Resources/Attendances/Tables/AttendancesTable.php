@@ -102,7 +102,7 @@ class AttendancesTable
                     }),
             ])
             ->headerActions([
-                \Filament\Tables\Actions\Action::make('deleteAll')
+                \Filament\Actions\Action::make('deleteAll')
                     ->label('Hapus SEMUA Data')
                     ->icon('heroicon-o-trash')
                     ->color('danger')
