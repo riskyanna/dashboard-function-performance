@@ -6,7 +6,7 @@ use Filament\Pages\Page;
 
 class TentangDeveloper extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-user-circle';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-user-circle';
 
     protected string $view = 'filament.pages.tentang-developer';
     
