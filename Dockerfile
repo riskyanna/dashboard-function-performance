@@ -13,6 +13,10 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip
 
+# Install Node.js & NPM
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs
+
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -25,19 +29,19 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /app
 
-# Copy existing application directory contents
+# Copy application files
 COPY . /app
 
-# Install dependencies
+# Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# DON'T cache config - let it load fresh
-# RUN php artisan config:cache
+# Install NPM dependencies & Build Assets
+RUN npm ci && npm run build
 
 # Expose port
 EXPOSE 8080
 
-# Start server - clear cache first, then migrate, then serve
+# Start server
 CMD php artisan config:clear && \
     php artisan route:clear && \
     php artisan view:clear && \
