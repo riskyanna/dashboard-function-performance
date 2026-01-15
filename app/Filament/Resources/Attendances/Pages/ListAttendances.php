@@ -26,7 +26,8 @@ class ListAttendances extends ListRecords
                         ->required(),
                 ])
                 ->action(function (array $data) {
-                    $file = public_path('storage/' . $data['attachment']);
+                    // Use Storage path instead of public_path for better reliability
+                    $file = \Illuminate\Support\Facades\Storage::disk('public')->path($data['attachment']);
                     
                     try {
                         \Maatwebsite\Excel\Facades\Excel::import(new \App\Imports\DashboardImport, $file);
