@@ -20,14 +20,14 @@ class ListAttendances extends ListRecords
                 ->form([
                     \Filament\Forms\Components\FileUpload::make('attachment')
                         ->label('Upload Excel File')
-                        ->disk('public')
+                        ->disk('local') // Ganti ke local agar aman
                         ->directory('imports')
                         ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'text/csv'])
                         ->required(),
                 ])
                 ->action(function (array $data) {
-                    // Use Storage path instead of public_path for better reliability
-                    $file = \Illuminate\Support\Facades\Storage::disk('public')->path($data['attachment']);
+                    // Gunakan disk local
+                    $file = \Illuminate\Support\Facades\Storage::disk('local')->path($data['attachment']);
                     
                     try {
                         \Maatwebsite\Excel\Facades\Excel::import(new \App\Imports\DashboardImport, $file);
