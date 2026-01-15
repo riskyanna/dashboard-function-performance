@@ -1,0 +1,15 @@
+Employee Id,Nama,Function,Shift,Reason Code,Date
+EMP001,Budi Santoso,Production,Morning,p,2024-01-02
+EMP002,Siti Aminah,QC,Morning,Present,2024-01-02
+EMP003,Rudi Hartono,Warehouse,Night,al,2024-01-03
+EMP004,Dewi Sartika,Production,Afternoon,alfa,2024-02-10
+EMP005,Joko Anwar,Maintenance,Morning,absend,2024-02-11
+EMP006,Toni Stark,Engineering,Night,sakit,2024-01-15
+EMP007,Steve Rogers,Security,Morning,izin,2024-03-05
+EMP008,Natasha R,HR,Morning,hadir,2024-03-06
+EMP009,Bruce Banner,R&D,Afternoon,s,2024-01-20
+EMP010,Clint Barton,Logistics,Morning,i,2024-02-15
+EMP011,Wanda M,Production,Night,p,2024-01-05
+EMP012,Peter Parker,Intern,Afternoon,al,2024-03-10
+EMP013,Tony S,Engineering,Morning,p,2024-02-01
+EMP014,Bruce W,Production,Night,sakit,2024-03-01
