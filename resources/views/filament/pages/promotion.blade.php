@@ -3,9 +3,8 @@
         <!-- Profile Card -->
         <div class="lg:col-span-1">
             <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 flex flex-col items-center text-center">
-                <div class="relative w-32 h-32 mb-4">
-                    <!-- GANTI FOTO DI SINI: Simpan foto anda di public/images/profile.jpg -->
-                    <img src="https://ui-avatars.com/api/?name=Riski+Ramadhan&background=F59E0B&color=fff&size=256" 
+                    <!-- Foto Profil Asli -->
+                    <img src="{{ asset('images/riski-profile.jpg') }}" 
                          alt="Riski Ramadhan" 
                          class="w-full h-full rounded-full object-cover border-4 border-primary-500 shadow-lg"
                     >
