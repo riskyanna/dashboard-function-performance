@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Collection;
 
 class AttendancesTable
 {
@@ -100,12 +101,33 @@ class AttendancesTable
                             );
                     }),
             ])
+            ->headerActions([
+                \Filament\Tables\Actions\Action::make('deleteAll')
+                    ->label('Hapus SEMUA Data')
+                    ->icon('heroicon-o-trash')
+                    ->color('danger')
+                    ->requiresConfirmation()
+                    ->modalHeading('Hapus Semua Data Attendance?')
+                    ->modalDescription('Apakah Anda yakin ingin menghapus SELURUH data? Tindakan ini tidak bisa dibatalkan.')
+                    ->modalSubmitActionLabel('Ya, Hapus Semua')
+                    ->action(function () {
+                        \App\Models\Attendance::truncate();
+                        \Filament\Notifications\Notification::make()
+                            ->title('Semua data berhasil dihapus')
+                            ->success()
+                            ->send();
+                    }),
+            ])
             ->actions([
                 EditAction::make(),
             ])
             ->bulkActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->action(function (Collection $records) {
+                            $records->each->delete(); // Fallback to standard for now, or use mass delete logic if preferred
+                            // Optimization: \App\Models\Attendance::whereKey($records->pluck('id')->toArray())->delete();
+                        }),
                 ]),
             ]);
     }
