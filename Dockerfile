@@ -36,8 +36,14 @@ RUN php artisan config:cache && \
     php artisan route:cache && \
     php artisan view:cache
 
+# Create start script
+RUN echo '#!/bin/bash\n\
+php artisan migrate --force\n\
+php -S 0.0.0.0:${PORT:-8080} -t public\n\
+' > /app/start.sh && chmod +x /app/start.sh
+
 # Expose port
 EXPOSE 8080
 
-# Start server with PORT fallback
-CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
+# Start server
+CMD ["/app/start.sh"]
