@@ -38,6 +38,9 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 # Install NPM dependencies & Build Assets
 RUN npm ci && npm run build
 
+# Publish Livewire Assets
+RUN php artisan livewire:publish --assets
+
 # Expose port
 EXPOSE 8080
 
