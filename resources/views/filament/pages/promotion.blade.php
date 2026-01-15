@@ -39,9 +39,14 @@
                 </ul>
 
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://wa.me/6289531463032" target="_blank" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                    <a href="https://wa.me/62895396836264" target="_blank" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <x-heroicon-s-chat-bubble-left-right class="w-5 h-5" />
                         Chat WhatsApp
+                    </a>
+                    
+                    <a href="https://riski-dev.vercel.app/" target="_blank" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border border-gray-200 dark:bg-gray-700 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-bold rounded-lg shadow hover:shadow-md transition-all">
+                        <x-heroicon-m-globe-alt class="w-5 h-5 text-blue-500" />
+                        Kunjungi Website Saya
                     </a>
                 </div>
             </div>
