@@ -17,6 +17,9 @@ class ListAttendances extends ListRecords
                 ->label('Import Excel')
                 ->icon('heroicon-o-arrow-up-tray')
                 ->color('success')
+                ->modalHeading('Import Data Attendance')
+                ->modalDescription('Silakan upload file Excel (.xlsx). Proses import mungkin memakan waktu beberapa saat tergantung jumlah data. Mohon tunggu hingga selesai dan jangan tutup halaman.')
+                ->modalSubmitActionLabel('Import Data')
                 ->form([
                     \Filament\Forms\Components\FileUpload::make('attachment')
                         ->label('Upload Excel File')
